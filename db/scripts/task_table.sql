@@ -21,11 +21,13 @@ create table task
     description text,
     created     timestamp without time zone,
     done        boolean,
-    author      text not null references users (email)
+    user_id     int not null references users (id)
 );
 
 create table users
 (
-    email text serial primary key,
+    id   serial primary key,
+    name text,
+    email text,
     password text
 );

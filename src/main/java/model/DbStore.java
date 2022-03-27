@@ -5,10 +5,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 
-import javax.management.Query;
 import java.util.Collection;
-import java.util.function.Function;
 
 public class DbStore implements Store {
 
@@ -50,13 +49,11 @@ public class DbStore implements Store {
     }
 
     @Override
-    public User findByUserEmail(String email) {
+    public Query<User> findByUserEmail(String email) {
         Session session = sf.openSession();
-        session.beginTransaction();
-        User user = session.get(User.class, email);
-        session.getTransaction().commit();
-        session.close();
-        return user;
+        Query query = session.createQuery("from User u where u.email = :email");
+        query.setParameter("email", email);
+        return query;
     }
 
 }

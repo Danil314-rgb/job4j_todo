@@ -11,10 +11,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    private String email;
+    private String password;
 
-    public static User of(String name) {
+    public static User of(String name, String email, String pass) {
         User user = new User();
         user.name = name;
+        user.email = email;
+        user.password = pass;
         return user;
     }
 
@@ -34,6 +38,22 @@ public class User {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String pass) {
+        this.password = pass;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,4 +66,5 @@ public class User {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

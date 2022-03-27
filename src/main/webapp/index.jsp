@@ -32,21 +32,12 @@
             return res;
         }
     </script>
-<%--
-    <script>
-        function okk() {
-            if ($('#res').val() === true) {
 
-                alert('Заполните поле: Новая запись');
-                res = false;
-            }
-            return res;
-        }
-    </script>--%>
-    <title>Работа мечты!</title>
+    <title>Список дел!</title>
 </head>
 <body>
 <div class="container">
+    <jsp:include page="topPanel.jsp"/>
     <div class="row">
         <div class="card" style="width:50%;">
             <div class="card-header">

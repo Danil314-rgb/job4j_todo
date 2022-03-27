@@ -1,5 +1,7 @@
 package model;
 
+import org.hibernate.query.Query;
+
 import java.util.Collection;
 
 public interface Store {
@@ -8,5 +10,5 @@ public interface Store {
 
     <T> Collection<T> allTasks();
 
-    User findByUserEmail(String email);
+    <T> Query<T> findByUserEmail(String email);
 }

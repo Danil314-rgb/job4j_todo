@@ -22,12 +22,6 @@ public class Task {
     public Task() {
     }
 
-    /*public Task(String description, LocalDateTime created, boolean done) {
-        this.description = description;
-        this.created = created;
-        this.done = done;
-    }*/
-
     public static Task of(String description, LocalDateTime created, boolean done, User user) {
         Task task = new Task();
         task.description = description;

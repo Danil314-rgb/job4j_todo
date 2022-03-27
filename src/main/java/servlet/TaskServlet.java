@@ -21,7 +21,7 @@ public class TaskServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        User user = DbStore.instOf().create(User.of("piz"));
+        User user = DbStore.instOf().create(User.of("Dan", "dan.@mail.ru", "piz"));
         DbStore.instOf().create(Task.of(
                 req.getParameter("description"),
                 LocalDateTime.now(),

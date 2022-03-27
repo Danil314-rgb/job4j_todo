@@ -23,39 +23,35 @@
     <script>
         function validate() {
             var res = true;
-            if ($('#firstName').val() === '' || $('#email').val() === '' || $('#pass').val() === '') {
-                alert('Заполните все поля: Имя Почта Пароль');
+            if ($('#email').val() === '' || $('#pass').val() === '') {
+                alert('Заполните все поля: Почта Пароль');
                 res = false;
             }
             return res;
         }
     </script>
 
-    <title>Список дел! Регистрация!</title>
+    <title>Список дел! Авторизация!</title>
 </head>
 <body>
 <div class="container">
     <jsp:include page="topPanel.jsp"/>
     <div class="row">
-        <div class="card" style="width: 50%;">
+        <div class="card" style="width: 50%">
             <div class="card-header">
-                Регистрация
+                Авторизация
             </div>
-            <div class="card-body" >
-                <form action="<%=request.getContextPath()%>/regist.do" method="post">
-                    <div class="form-group">
-                        <label>Имя</label>
-                        <input type="text" class="form-control" name="name" id="firstName">
-                    </div>
+            <div class="card-body">
+                <form action="<%=request.getContextPath()%>/login.do" method="post">
                     <div class="form-group">
                         <label>Почта</label>
-                        <input type="text" class="form-control" name="mail" id="email">
+                        <input type="text" class="form-control" name="email" id="email">
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
                         <input type="text" class="form-control" name="password" id="pass">
                     </div>
-                    <button type="submit" class="btn btn-primary" onclick="return validate()">Зарегестрироваться</button>
+                    <button type="submit" class="btn btn-primary" onclick="return validate()">Войти</button>
                     <c:if test="${not empty error}">
                         <div style="color:red; font-weight: bold; margin: 30px 0;">
                             <c:out value="${error}"/>
@@ -66,3 +62,4 @@
         </div>
     </div>
 </div>
+</body>
