@@ -2,6 +2,7 @@ package servlet;
 
 import model.DbStore;
 import model.Task;
+import model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,12 @@ public class TaskServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        DbStore.instOf().addTask(new Task(req.getParameter("description"), LocalDateTime.now(), false));
+        User user = DbStore.instOf().create(User.of("piz"));
+        DbStore.instOf().create(Task.of(
+                req.getParameter("description"),
+                LocalDateTime.now(),
+                false,
+                user));
         resp.sendRedirect(req.getContextPath() + "/index.jsp");
     }
 }

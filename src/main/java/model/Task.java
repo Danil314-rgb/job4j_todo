@@ -15,17 +15,26 @@ public class Task {
     private LocalDateTime created;
     private boolean done;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Task() {
     }
 
-    public Task(String description) {
-        this.description = description;
-    }
-
-    public Task(String description, LocalDateTime created, boolean done) {
+    /*public Task(String description, LocalDateTime created, boolean done) {
         this.description = description;
         this.created = created;
         this.done = done;
+    }*/
+
+    public static Task of(String description, LocalDateTime created, boolean done, User user) {
+        Task task = new Task();
+        task.description = description;
+        task.created = created;
+        task.done = done;
+        task.user = user;
+        return task;
     }
 
     public int getId() {
@@ -60,6 +69,14 @@ public class Task {
         this.done = done;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,4 +89,5 @@ public class Task {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

@@ -1,12 +1,12 @@
 package model;
 
-import org.hibernate.SessionFactory;
-
 import java.util.Collection;
 
 public interface Store {
 
-    void addTask(Task task);
+    <T> T create(T user);
 
-    Collection<Task> allTasks();
+    <T> Collection<T> allTasks();
+
+    User findByUserEmail(String email);
 }

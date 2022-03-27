@@ -8,13 +8,16 @@ import java.util.Collection;
 
 public class Main {
 
-    /*public static void main(String[] args) {
-        Task task1 = new Task("fds", LocalDateTime.now(), true);
+    public static void main(String[] args) {
+        /*User user = DbStore.instOf().create(User.of("Max"));
+        DbStore.instOf().create(Task.of(
+                "fds",
+                 LocalDateTime.now(),
+                true,
+                user));*/
 
-        Collection<Task> list = DbStore.instOf().allTasks();
-        for (var item : list) {
-            System.out.println(item.getId()
-                    + item.getDescription() + item.getCreated() + item.getDone());
-        }
-    }*/
+        User user = DbStore.instOf().findByUserEmail("");
+        System.out.println(user.getName() + user.getId());
+
+    }
 }

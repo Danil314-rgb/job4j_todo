@@ -6,7 +6,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import javax.management.Query;
 import java.util.Collection;
+import java.util.function.Function;
 
 public class DbStore implements Store {
 
@@ -28,16 +30,7 @@ public class DbStore implements Store {
     }
 
     @Override
-    public void addTask(Task task) {
-        Session session = sf.openSession();
-        session.beginTransaction();
-        session.save(task);
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    @Override
-    public Collection<Task> allTasks() {
+    public <T> Collection<T> allTasks() {
         Session session = sf.openSession();
         session.beginTransaction();
         Collection tasks = session.createQuery("from model.Task").list();
@@ -45,4 +38,25 @@ public class DbStore implements Store {
         session.close();
         return tasks;
     }
+
+    @Override
+    public <T> T create(T model) {
+        Session session = sf.openSession();
+        session.beginTransaction();
+        session.save(model);
+        session.getTransaction().commit();
+        session.close();
+        return model;
+    }
+
+    @Override
+    public User findByUserEmail(String email) {
+        Session session = sf.openSession();
+        session.beginTransaction();
+        User user = session.get(User.class, email);
+        session.getTransaction().commit();
+        session.close();
+        return user;
+    }
+
 }

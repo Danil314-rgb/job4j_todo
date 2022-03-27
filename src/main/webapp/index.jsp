@@ -1,5 +1,6 @@
 <%@ page import="model.Task" %>
 <%@ page import="model.DbStore" %>
+<%@ page import="java.util.Collection" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!doctype html>
 <html lang="en">
@@ -31,7 +32,7 @@
             return res;
         }
     </script>
-
+<%--
     <script>
         function okk() {
             if ($('#res').val() === true) {
@@ -41,20 +42,7 @@
             }
             return res;
         }
-    </script>
-
-    <%--<script>
-        var enabledBox = document.myForm.enable;
-        function onclick(e){
-            var printBlock = document.getElementById("printBlock");
-            var enabled = e.target.checked;
-            printBlock.textContent = enabled;
-        }
-        enabledBox.addEventListener("click", onclick);
     </script>--%>
-
-
-
     <title>Работа мечты!</title>
 </head>
 <body>
@@ -90,10 +78,12 @@
                         <th scope="col">Задача</th>
                         <th scope="col">Дата создания</th>
                         <th scope="col">Сделано ли?</th>
+                        <th scope="col">Автор</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <% for (Task task : DbStore.instOf().allTasks()) { %>
+                    <% Collection<Task> list = DbStore.instOf().allTasks();
+                        for (Task task : list) { %>
                     <tr>
                         <td>
                             <%=task.getDescription()%>
@@ -104,6 +94,9 @@
                         <td>
                             <input type="checkbox" name="enabled" onclick="okk()" id="res">
                             <%=task.getDone()%> <%--ToDO убрать--%>
+                        </td>
+                        <td>
+                            <%=task.getUser().getName()%>
                         </td>
                     </tr>
                     <% } %>
