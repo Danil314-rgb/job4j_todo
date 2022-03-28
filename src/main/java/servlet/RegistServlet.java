@@ -24,7 +24,7 @@ public class RegistServlet extends HttpServlet {
             req.getRequestDispatcher("regist.jsp").forward(req, resp);
         } else {
             DbStore.instOf().create(User.of(name, email, password));
-            resp.sendRedirect(req.getContextPath() + "/regist.do");
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
         }
     }
 }

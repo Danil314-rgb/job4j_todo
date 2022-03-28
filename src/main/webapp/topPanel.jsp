@@ -26,12 +26,38 @@
 <div class="row">
     <ul class="nav">
         <li class="nav-item">
+            <a class="nav-link" href="<%=request.getContextPath()%>/index.jsp">Главная</a>
+        </li>
+    </ul>
+    <ul class="nav">
+        <li class="nav-item">
             <a class="nav-link" href="<%=request.getContextPath()%>/regist.jsp">Регистрация</a>
         </li>
     </ul>
-    <ul>
+    <%--<ul class="nav">
         <li class="nav-item">
             <a class="nav-link" href="<%=request.getContextPath()%>/login.jsp">Авторизация</a>
         </li>
+    </ul>--%>
+    <ul class="nav">
+        <li class="nav-item">
+            <c:choose>
+                <c:when test="${user == null}">
+                    <a class="nav-link" href='<c:url value="/login.jsp"/>'>
+                        Anonymous | Войти
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a class="nav-link" href='<c:url value="/auth.do"/>'>
+
+                    </a>
+                </c:otherwise>
+            </c:choose>
+        </li>
+        <c:if test="${user != null}">
+            <li class="nav-item">
+                <a class="nav-link" href='<c:url value="/auth.do"/>'> <c:out value="${user.name}"/> | Выйти</a>
+            </li>
+        </c:if>
     </ul>
 </div>
