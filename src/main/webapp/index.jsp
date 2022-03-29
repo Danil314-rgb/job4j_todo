@@ -33,6 +33,22 @@
         }
     </script>
 
+    <script>
+        function change() {
+            var checkbox = document.getElementById('res');
+            /*if (checkbox.checked != true) {
+                alert("Что то произошло")
+            }*/
+            alert("Что то произошло")
+        }
+        /*$(document).ready(function ()
+        {
+            $('#res').change(function () {
+                alert('Снова что то произошло');
+            })
+        });*/
+    </script>
+
     <title>Список дел!</title>
 </head>
 <body>
@@ -83,7 +99,7 @@
                             <%=task.getCreated()%>
                         </td>
                         <td>
-                            <input type="checkbox" name="enabled" onclick="okk()" id="res">
+                            <input type="checkbox" name="enabled" onclick="change()" id="res">
                             <%=task.getDone()%> <%--ToDO убрать--%>
                         </td>
                         <td>
