@@ -22,7 +22,7 @@ public class FlagServlet extends HttpServlet {
         /*resp.setContentType("text/plain");
         resp.setCharacterEncoding("UTF-8");
         String name = req.getParameter("name");
-        *//*String id = req.getParameter("id");*//*
+        String id = req.getParameter("id");
         DbStore.instOf().updateDone(name);*/
     }
 }
