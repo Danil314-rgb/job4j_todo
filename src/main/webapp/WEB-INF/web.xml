@@ -45,6 +45,15 @@
         <url-pattern>/logout.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>FlagServlet</servlet-name>
+        <servlet-class>servlet.FlagServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FlagServlet</servlet-name>
+        <url-pattern>/flag.do</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>filter.AuthFilter</filter-class>
@@ -53,6 +62,7 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
+
 
 
 </web-app>

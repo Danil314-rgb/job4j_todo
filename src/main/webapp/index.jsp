@@ -21,6 +21,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <script>
         function validate() {
@@ -33,7 +34,7 @@
         }
     </script>
 
-    <script>
+    <%--<script>
         function change() {
             var checkbox = document.getElementById('res');
             /*if (checkbox.checked != true) {
@@ -47,6 +48,69 @@
                 alert('Снова что то произошло');
             })
         });*/
+    </script>--%>
+
+
+    <script>
+        function addToCart(itemCode) {
+            var req = newXMLHttpRequest();
+
+            req.open("POST", "flag.do", true);
+            req.setRequestHeader("Content-Type",
+                "application/x-www-form-urlencoded");
+            req.send("done=" + itemCode);
+        }
+    </script>
+
+    <script>
+        function newXMLHttpRequest() {
+
+            var xmlreq = false;
+
+            if (window.XMLHttpRequest) {
+                xmlreq = new XMLHttpRequest();
+
+            } else if (window.ActiveXObject) {
+
+                try {
+
+                    xmlreq = new ActiveXObject("Msxml2.XMLHTTP");
+
+                } catch (e1) {
+
+
+                    try {
+
+                        xmlreq = new ActiveXObject("Microsoft.XMLHTTP");
+
+                    } catch (e2) {
+
+                    }
+                }
+            }
+
+            return xmlreq;
+        }
+    </script>
+
+
+    <script>
+        $("#action1").change(function () {
+            var value = $(this).val();
+            var url = $(this).attr("url");
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: "value=",
+                success: function (msg) {
+                    if (msg == 'success') {
+                        alert('Success');
+                    } else {
+                        alert('Fail');
+                    }
+                }
+            });
+        });
     </script>
 
     <title>Список дел!</title>
@@ -99,7 +163,7 @@
                             <%=task.getCreated()%>
                         </td>
                         <td>
-                            <input type="checkbox" name="enabled" onclick="change()" id="res">
+                            <input type="checkbox" name="enabled" onclick="addToCart(true)" id="res">
                             <%=task.getDone()%> <%--ToDO убрать--%>
                         </td>
                         <td>

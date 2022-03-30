@@ -11,4 +11,6 @@ public interface Store {
     <T> Collection<T> allTasks();
 
     <T> Query<T> findByUserEmail(String email);
+
+    void updateDone(/*String id, */String name);
 }
