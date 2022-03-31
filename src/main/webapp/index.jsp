@@ -2,6 +2,7 @@
 <%@ page import="model.DbStore" %>
 <%@ page import="java.util.Collection" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
