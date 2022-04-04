@@ -34,11 +34,6 @@
             <a class="nav-link" href="<%=request.getContextPath()%>/regist.jsp">Регистрация</a>
         </li>
     </ul>
-    <%--<ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link" href="<%=request.getContextPath()%>/login.jsp">Авторизация</a>
-        </li>
-    </ul>--%>
     <ul class="nav">
         <li class="nav-item">
             <c:choose>
@@ -48,7 +43,7 @@
                     </a>
                 </c:when>
                 <c:otherwise>
-                    <a class="nav-link" href='<c:url value="/auth.do"/>'>
+                    <a class="nav-link" href='<c:url value="/logout.do"/>'>
 
                     </a>
                 </c:otherwise>
@@ -56,7 +51,7 @@
         </li>
         <c:if test="${user != null}">
             <li class="nav-item">
-                <a class="nav-link" href='<c:url value="/auth.do"/>'> <c:out value="${user.name}"/> | Выйти</a>
+                <a class="nav-link" href='<c:url value="/logout.do"/>'> <c:out value="${user.name}"/> | Выйти</a>
             </li>
         </c:if>
     </ul>
