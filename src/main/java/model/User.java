@@ -14,8 +14,9 @@ public class User {
     private String email;
     private String password;
 
-    public static User of(String name, String email, String pass) {
+    public static User of(int id, String name, String email, String pass) {
         User user = new User();
+        user.id = id;
         user.name = name;
         user.email = email;
         user.password = pass;

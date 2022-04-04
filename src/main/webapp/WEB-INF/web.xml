@@ -54,6 +54,16 @@
         <url-pattern>/flag.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>DoneServlet</servlet-name>
+        <servlet-class>servlet.DoneServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DoneServlet</servlet-name>
+        <url-pattern>/done.do</url-pattern>
+    </servlet-mapping>
+
+
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>filter.AuthFilter</filter-class>

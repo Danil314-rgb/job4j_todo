@@ -23,6 +23,7 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script>
         function validate() {
@@ -33,85 +34,6 @@
             }
             return res;
         }
-    </script>
-
-    <%--<script>
-        function change() {
-            var checkbox = document.getElementById('res');
-            /*if (checkbox.checked != true) {
-                alert("Что то произошло")
-            }*/
-            alert("Что то произошло")
-        }
-        /*$(document).ready(function ()
-        {
-            $('#res').change(function () {
-                alert('Снова что то произошло');
-            })
-        });*/
-    </script>--%>
-
-
-    <script>
-        function addToCart(itemCode) {
-            var req = newXMLHttpRequest();
-
-            req.open("POST", "flag.do", true);
-            req.setRequestHeader("Content-Type",
-                "application/x-www-form-urlencoded");
-            req.send("done=" + itemCode);
-        }
-    </script>
-
-    <script>
-        function newXMLHttpRequest() {
-
-            var xmlreq = false;
-
-            if (window.XMLHttpRequest) {
-                xmlreq = new XMLHttpRequest();
-
-            } else if (window.ActiveXObject) {
-
-                try {
-
-                    xmlreq = new ActiveXObject("Msxml2.XMLHTTP");
-
-                } catch (e1) {
-
-
-                    try {
-
-                        xmlreq = new ActiveXObject("Microsoft.XMLHTTP");
-
-                    } catch (e2) {
-
-                    }
-                }
-            }
-
-            return xmlreq;
-        }
-    </script>
-
-
-    <script>
-        $("#action1").change(function () {
-            var value = $(this).val();
-            var url = $(this).attr("url");
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: "value=",
-                success: function (msg) {
-                    if (msg == 'success') {
-                        alert('Success');
-                    } else {
-                        alert('Fail');
-                    }
-                }
-            });
-        });
     </script>
 
     <title>Список дел!</title>
@@ -164,7 +86,10 @@
                             <%=task.getCreated()%>
                         </td>
                         <td>
-                            <input type="checkbox" name="enabled" onclick="addToCart(true)" id="res">
+                            <%--<input type="checkbox" name="enabled" onclick="addToCart(true)" id="res">--%>
+                            <a href="<%=request.getContextPath()%>/done/edit.jsp?id="<%=task.getId()%>>
+                                <i class="fa fa-edit mr-3"></i>
+                            </a>
                             <%=task.getDone()%> <%--ToDO убрать--%>
                         </td>
                         <td>

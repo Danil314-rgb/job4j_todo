@@ -57,17 +57,23 @@ public class DbStore implements Store {
     }
 
     @Override
-    public void updateDone(/*String id, */String name) {
-        boolean done = Boolean.parseBoolean(name);
-        /*done = !done;*/
+    public void updateDone(boolean done, int id) {
 
         Session session = sf.openSession();
         Query query = session.createQuery(
-                "update Task t set t.done = :newDone where t.id = 1" /*where t.id = :tId*/
+                "update Task t set t.done = :newDone where t.id = :tId"
         );
         query.setParameter("newDone", done);
-        /*query.setParameter("tId", Integer.parseInt(id));*/
+        query.setParameter("tId", id);
         query.executeUpdate();
+    }
+
+    @Override
+    public Task findByTaskId(int id) {
+        Session session = sf.openSession();
+        Query query = session.createQuery("from Task t where t.id = :tId");
+        query.setParameter("tId", id);
+        return (Task) query.uniqueResult();
     }
 
 }

@@ -25,9 +25,7 @@ public class AuthServlet extends HttpServlet {
         } else {
             if (password.equals(nUser.uniqueResult().getPassword())) {
                 HttpSession session = req.getSession();
-                User user = new User();
-                user.setName(email);
-                user.setEmail(email);
+                User user = (User) DbStore.instOf().findByUserEmail(email).uniqueResult();
                 session.setAttribute("user", user);
                 resp.sendRedirect(req.getContextPath() + "/index.do");
             } else {

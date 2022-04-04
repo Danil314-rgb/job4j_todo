@@ -12,5 +12,7 @@ public interface Store {
 
     <T> Query<T> findByUserEmail(String email);
 
-    void updateDone(/*String id, */String name);
+    void updateDone(boolean done, int id);
+
+    Task findByTaskId(int id);
 }
