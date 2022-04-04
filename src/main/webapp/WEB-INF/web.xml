@@ -46,15 +46,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>FlagServlet</servlet-name>
-        <servlet-class>servlet.FlagServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FlagServlet</servlet-name>
-        <url-pattern>/flag.do</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>DoneServlet</servlet-name>
         <servlet-class>servlet.DoneServlet</servlet-class>
     </servlet>
